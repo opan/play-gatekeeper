@@ -1,0 +1,17 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: GopayK8sContainerLimits
+metadata:
+  name: container-must-have-request-limit
+spec:
+  match:
+    namespace: ["default"]
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+  parameters:
+    requests:
+      cpu: "500m"
+      memory: "128Mi"
+    limits:
+      cpu: "1500m"
+      memory: "384Mi"

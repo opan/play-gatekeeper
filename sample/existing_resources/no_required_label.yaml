@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: existing-no-required-label
+  labels:
+    owner: me.agilebank.demo
+    team: opay
+spec:
+  containers:
+    - name: opa
+      image: openpolicyagent/opa:0.9.2
+      args:
+        - "run"
+        - "--server"
+        - "--addr=localhost:8080"
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "128Mi"
+        limits:
+          cpu: "1500m"
+          memory: "384Mi"

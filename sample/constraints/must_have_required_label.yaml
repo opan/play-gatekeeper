@@ -1,0 +1,16 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: FoopayK8sRequiredLabels
+metadata:
+  name: must-have-foopay-label
+spec:
+  match:
+    namespaces: ["default"]
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod", "Deployment", "Service", "ReplicaSet"]
+  parameters:
+    labels:
+      - key: team
+        value: foopay
+      - key: app
+        value: ""
